@@ -14,13 +14,6 @@ def ft_load(path: str) -> np.ndarray:
     
     img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
     print(f"The shape of image is : {img.shape}")
+
     return img
 
-def main():
-    "main function"
-    pass
-
-
-if __name__ == "__main__":
-    "main run"
-    main()
