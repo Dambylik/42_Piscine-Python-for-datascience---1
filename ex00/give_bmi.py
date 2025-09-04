@@ -8,12 +8,15 @@ def give_bmi(height: list[int | float],
     """
     if len(height) != len(weight):
         raise ValueError("Height and weight lists must be the same length")
+
     for h in height:
         if not isinstance(h, (int, float)):
             raise TypeError("Height must only be int or float")
+
     for w in weight:
         if not isinstance(w, (int, float)):
             raise TypeError("Weight must only be int or float")
+
     bmi_list = []
     for i in range(len(height)):
         h = height[i]
