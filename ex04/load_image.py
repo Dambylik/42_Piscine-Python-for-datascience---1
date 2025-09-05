@@ -16,4 +16,3 @@ def ft_load(path: str) -> np.ndarray:
     print(f"The shape of image is : {img.shape}")
 
     return img
-
