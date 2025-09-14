@@ -51,7 +51,7 @@ def ft_green(array) -> np.ndarray:
     for i in range(array.shape[0]):
         for j in range(array.shape[1]):
             green_intensity[i, j, 0] = 0
-            green_intensity[i, j, 1] = array[i, j, 0]
+            green_intensity[i, j, 1] = array[i, j, 1]
             green_intensity[i, j, 2] = 0
 
     plt.imshow(green_intensity)
@@ -71,7 +71,7 @@ def ft_blue(array) -> np.ndarray:
         for j in range(array.shape[1]):
             blue_intensity[i, j, 0] = 0
             blue_intensity[i, j, 1] = 0
-            blue_intensity[i, j, 2] = array[i, j, 0]
+            blue_intensity[i, j, 2] = array[i, j, 2]
 
     plt.imshow(blue_intensity)
     plt.show()
@@ -87,8 +87,11 @@ def ft_grey(array) -> np.ndarray:
 
     for i in range(array.shape[0]):
         for j in range(array.shape[1]):
+            # Calculate average of R, G, B channels for proper greyscale
             red_value = array[i, j, 0]
-            grey_value = red_value // 3
+            green_value = array[i, j, 1]
+            blue_value = array[i, j, 2]
+            grey_value = (red_value + green_value + blue_value) // 3
             for k in range(array.shape[2]):
                 grey_array[i, j, k] = grey_value
 
@@ -98,16 +101,36 @@ def ft_grey(array) -> np.ndarray:
 
 
 def main():
-    "main function"
+    """Main function that demonstrates all image processing functions"""
     try:
-        img = ft_load("landscape.jpg")
-        # print(img)
-        # ft_invert(img)
-        # ft_red(img)
-        # ft_green(img)
-        # ft_blue(img)
-        ft_grey(img)
-
+        print("=== Image Processing Demo ===")
+        
+        # Load the image
+        print("\n1. Loading image...")
+        array = ft_load("landscape.jpg")
+        
+        # Apply all transformations
+        print("\n2. Applying invert filter...")
+        ft_invert(array)
+        
+        print("\n3. Applying red filter...")
+        ft_red(array)
+        
+        print("\n4. Applying green filter...")
+        ft_green(array)
+        
+        print("\n5. Applying blue filter...")
+        ft_blue(array)
+        
+        print("\n6. Applying grey filter...")
+        ft_grey(array)
+        
+        # Print docstring
+        print("\n7. Function documentation:")
+        print(ft_invert.__doc__)
+        
+        print("\n=== Demo completed successfully ===")
+        
     except Exception as e:
         print(f"Error: {e}")
 
