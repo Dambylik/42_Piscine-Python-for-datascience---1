@@ -12,7 +12,7 @@ def zoom(image: np.ndarray) -> np.ndarray:
     crop = image[start_y:start_y+400, start_x:start_x+400]
     gray = 0.299*crop[:, :, 0] + 0.587 * crop[:, :, 1] + 0.114 * crop[:, :, 2]
     gray = gray.astype(np.uint8)  # Convert to integers
-    
+
     gray = np.expand_dims(gray, axis=2)
 
     print(f"New shape after slicing: {gray.shape}")

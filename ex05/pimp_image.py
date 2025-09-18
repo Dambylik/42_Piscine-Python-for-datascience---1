@@ -4,11 +4,8 @@ import matplotlib.pyplot as plt
 
 
 def ft_invert(array: np.ndarray) -> np.ndarray:
-    """
-    Inverts the colors of an RGB image
-    by replacing each value v with 255 - v.
-    """
-    print("Inverts the color of the image received")
+    """\nInverts the color of the image received."""
+    print(array)
     inverted_array = np.zeros_like(array)
 
     for i in range(array.shape[0]):  # rows (height)
@@ -26,7 +23,6 @@ def ft_red(array: np.ndarray) -> np.ndarray:
     Keep the red channel values as they are.
     Turn off the green and blue channels ([R, 0, 0]).
     """
-    print("Intense red color of the image received")
     red_intensity = np.zeros_like(array)
 
     for i in range(array.shape[0]):
@@ -45,7 +41,6 @@ def ft_green(array) -> np.ndarray:
     Keep the green channel values as they are.
     Turn off the green and blue channels ([0, G, 0]).
     """
-    print("Intense green color of the image received")
     green_intensity = np.zeros_like(array)
 
     for i in range(array.shape[0]):
@@ -64,7 +59,6 @@ def ft_blue(array) -> np.ndarray:
     Keep the blue channel values as they are.
     Turn off the green and blue channels ([0, 0, B]).
     """
-    print("Intense blue color of the image received")
     blue_intensity = np.zeros_like(array)
 
     for i in range(array.shape[0]):
@@ -91,7 +85,8 @@ def ft_grey(array) -> np.ndarray:
             red_value = array[i, j, 0]
             green_value = array[i, j, 1]
             blue_value = array[i, j, 2]
-            grey_value = (red_value + green_value + blue_value) // 3
+            all_colors = (int(red_value) + int(green_value) + int(blue_value))
+            grey_value = all_colors / 3
             for k in range(array.shape[2]):
                 grey_array[i, j, k] = grey_value
 
@@ -103,34 +98,13 @@ def ft_grey(array) -> np.ndarray:
 def main():
     """Main function that demonstrates all image processing functions"""
     try:
-        print("=== Image Processing Demo ===")
-        
-        # Load the image
-        print("\n1. Loading image...")
-        array = ft_load("landscape.jpg")
-        
-        # Apply all transformations
-        print("\n2. Applying invert filter...")
-        ft_invert(array)
-        
-        print("\n3. Applying red filter...")
-        ft_red(array)
-        
-        print("\n4. Applying green filter...")
-        ft_green(array)
-        
-        print("\n5. Applying blue filter...")
-        ft_blue(array)
-        
-        print("\n6. Applying grey filter...")
-        ft_grey(array)
-        
-        # Print docstring
-        print("\n7. Function documentation:")
+        img = ft_load("landscape.jpg")
+        ft_invert(img)
+        ft_red(img)
+        ft_green(img)
+        ft_blue(img)
+        ft_grey(img)
         print(ft_invert.__doc__)
-        
-        print("\n=== Demo completed successfully ===")
-        
     except Exception as e:
         print(f"Error: {e}")
 

@@ -7,7 +7,6 @@ def rotate(image: np.ndarray) -> np.ndarray:
     """
     Transposes the image by swapping rows and columns (reversing dimensions).
     """
-    print(f"Original shape: {image.shape}")
     height = image.shape[0]
     width = image.shape[1]
     transposed_image = np.zeros((width, height), dtype=image.dtype)
@@ -33,10 +32,8 @@ def zoom(image: np.ndarray) -> np.ndarray:
     crop = image[start_y:start_y+400, start_x:start_x+400]
     gray = 0.299*crop[:, :, 0] + 0.587 * crop[:, :, 1] + 0.114 * crop[:, :, 2]
     gray = gray.astype(np.uint8)  # Convert to integers
-
     gray = np.expand_dims(gray, axis=2)
-
-    print(f"New shape after slicing: {gray.shape}")
+    print(f"The shape of image is: {gray.shape}")
     print(gray)
     return gray
 
@@ -45,7 +42,6 @@ def main():
     "main function"
     try:
         img = ft_load("animal.jpeg")
-        print(img)
         rotate(zoom(img))
     except Exception as e:
         print(f"Error: {e}")
