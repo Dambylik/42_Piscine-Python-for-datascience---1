@@ -11,7 +11,7 @@ def zoom(image: np.ndarray) -> np.ndarray:
     start_y = 91
     crop = image[start_y:start_y+400, start_x:start_x+400]
     gray = 0.299*crop[:, :, 0] + 0.587 * crop[:, :, 1] + 0.114 * crop[:, :, 2]
-    gray = gray.astype(np.uint8)  # Convert to integers
+    gray = gray.astype(np.uint8)
 
     gray = np.expand_dims(gray, axis=2)
 

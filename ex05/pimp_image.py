@@ -8,9 +8,9 @@ def ft_invert(array: np.ndarray) -> np.ndarray:
     print(array)
     inverted_array = np.zeros_like(array)
 
-    for i in range(array.shape[0]):  # rows (height)
-        for j in range(array.shape[1]):  # columns (width)
-            for k in range(array.shape[2]):  # channels (R, G, B)
+    for i in range(array.shape[0]):
+        for j in range(array.shape[1]):
+            for k in range(array.shape[2]):
                 inverted_array[i, j, k] = 255 - array[i, j, k]
 
     plt.imshow(inverted_array)
@@ -81,7 +81,6 @@ def ft_grey(array) -> np.ndarray:
 
     for i in range(array.shape[0]):
         for j in range(array.shape[1]):
-            # Calculate average of R, G, B channels for proper greyscale
             red_value = array[i, j, 0]
             green_value = array[i, j, 1]
             blue_value = array[i, j, 2]
